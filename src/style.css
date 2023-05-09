@@ -45,7 +45,8 @@ body {
   gap: 30px;
   /* border: 2px red solid; */
 }
-button {
+.upperBody button,
+.lowerBody button {
   background: #5e5df0;
   border-radius: 999px;
   box-shadow: #5e5df0 0 10px 20px -10px;
@@ -69,3 +70,102 @@ button {
   word-break: break-word;
   border: 0;
 }
+
+.exercisesDiv {
+  /* border: 2px red solid; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7%;
+  flex: 1;
+}
+
+ul {
+  width: 100%;
+  /* border: 2px solid blue; */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+li {
+  /* border: 2px green solid; */
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* white-space: nowrap; */
+}
+/* 
+.button-59:last-child {
+  border-bottom: #000;
+} */
+.button-59 {
+  margin-top: 5px;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #06f;
+  /* border-bottom: none; */
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -0.8px;
+  line-height: 24px;
+  min-width: 140px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  flex: 1;
+  border-radius: 18px;
+}
+
+.button-59:focus {
+  color: #171e29;
+}
+
+.button-59:hover {
+  border-color: rgb(3, 67, 162);
+  color: rgb(3, 67, 162);
+  fill: rgb(3, 67, 162);
+}
+
+.button-59:active {
+  border-color: rgb(3, 67, 162);
+  color: rgb(3, 67, 162);
+  fill: rgb(3, 67, 162);
+}
+
+@media (min-width: 768px) {
+  .button-59 {
+    min-width: 170px;
+  }
+}
+/* text-decoration: none;
+  color: #000;
+  display: block;
+  width: 200px; */
+/* -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease; */
+
+/* li a:hover {
+  font-size: 30px;
+  background: #f6f6f6;
+} */

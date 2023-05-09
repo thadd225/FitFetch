@@ -40,18 +40,18 @@ const UpperBody = (props) => {
         <button
           className="back"
           onClick={() => {
-            props.handleClick('back');
+            props.handleClick('lats');
           }}
         >
           Back
         </button>
         <button
-          className="abs"
+          className="abdominals"
           onClick={() => {
-            props.handleClick('abs');
+            props.handleClick('abdominals');
           }}
         >
-          Abs
+          Abdominals
         </button>
       </div>
     </div>

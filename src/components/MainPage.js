@@ -1,9 +1,13 @@
 import React from 'react';
+import { useState } from 'react';
 import Greeting from './Greeting.js';
 import UpperBody from './UpperBody.js';
 import LowerBody from './LowerBody.js';
+import Exercises from './Exercises.js';
 
 const MainPage = () => {
+  //useState to render data from api request
+  const [name, setName] = useState([]);
   //create function that on click will send a get request to an api with the endpoint corresponding to the name of button clicked
   const handleClick = async (muscle) => {
     try {
@@ -21,7 +25,8 @@ const MainPage = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const result = await response.json();
-      console.log(result);
+      setName(result);
+      console.log('result: ', result);
     } catch (err) {
       console.error('Error: ', err);
     }
@@ -32,6 +37,7 @@ const MainPage = () => {
       <div className="innerBody">
         <UpperBody handleClick={handleClick} />
         <LowerBody handleClick={handleClick} />
+        <Exercises name={name} />
       </div>
     </div>
   );
