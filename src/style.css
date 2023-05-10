@@ -13,6 +13,12 @@ body {
   /* border: 2px red solid; */
 }
 
+.Greeting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .Greeting1,
 .Greeting2 {
   display: flex;
@@ -46,7 +52,9 @@ body {
   /* border: 2px red solid; */
 }
 .upperBody button,
-.lowerBody button {
+.lowerBody button,
+.beginWorkout,
+#endWorkout {
   background: #5e5df0;
   border-radius: 999px;
   box-shadow: #5e5df0 0 10px 20px -10px;
@@ -69,6 +77,16 @@ body {
   width: fit-content;
   word-break: break-word;
   border: 0;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* border: 2px green solid; */
+  margin-top: 20px;
+}
+#endWorkout {
+  background-color: red;
 }
 
 .exercisesDiv {
@@ -145,9 +163,9 @@ li {
 }
 
 .button-59:active {
-  border-color: rgb(3, 67, 162);
-  color: rgb(3, 67, 162);
-  fill: rgb(3, 67, 162);
+  border-color: green;
+  color: green;
+  fill: green;
 }
 
 @media (min-width: 768px) {

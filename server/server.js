@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 app.post('/add', (req, res) => {
   console.log('post request hit serverside');
   console.log('req.body', req.body);
-  res.status(200).json({ message: 'Exercise added successfully ' });
+  res.status(200).json({ message: 'Workout added successfully ' });
 });
 
 // catch-all route handler for any requests to an unknown route
