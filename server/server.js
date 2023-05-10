@@ -36,6 +36,11 @@ app.patch('/add', workoutController.addExercise, (req, res) => {
   res.status(200).json({ message: 'Exercise added successfully ' });
 });
 
+//request handler for ending workout
+app.post('/end', workoutController.endWorkout, (req, res) => {
+  res.status(200);
+});
+
 // catch-all route handler for any requests to an unknown route
 app.use('*', (req, res) => res.sendStatus(404));
 

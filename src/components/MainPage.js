@@ -64,6 +64,7 @@ const MainPage = () => {
         <EndWorkout
           workoutStatus={workoutStatus}
           handleWorkoutStatusClick={handleWorkoutStatusClick}
+          workoutName={workoutName}
         />
       </div>
     </div>

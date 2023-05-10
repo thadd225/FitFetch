@@ -20,7 +20,7 @@ const Greeting = (props) => {
   };
 
   //workoutStatus set to false originally, then when begin workout button is pressed, set to true
-  console.log('props workoutStatus', props.workoutStatus);
+  // console.log('props workoutStatus', props.workoutStatus);
   if (props.workoutStatus === false) {
     return (
       <div className="Greeting">
