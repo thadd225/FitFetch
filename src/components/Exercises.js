@@ -2,17 +2,21 @@ import React from 'react';
 
 const Exercises = (props) => {
   //alert user to confirm selection when clicking exercise button?
-
+  // console.log('exercise props.workoutName ', props.workoutName);
   //when user clicks exercise button, send post request to /add (using fetch)
   const handleExerciseClick = async (exercise) => {
-    console.log('exercise: ', typeof exercise);
-    // fetch(`http://localhost:3000/add`, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ exercise }),
-    // })
-    //   .then((res) => res.json())
-    //   .catch((error) => console.error('Error: ', error));
+    // console.log('input', props.workoutName);
+    // console.log('exercise: ', exercise);
+    fetch(`http://localhost:3000/add`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        exercise: exercise,
+        workoutName: props.workoutName,
+      }),
+    })
+      .then((res) => res.json())
+      .catch((error) => console.error('Error: ', error));
   };
   if (props.workoutStatus === true) {
     //MUST HAVE 2 RETURN STATEMENTS WHEN USING MAP TO RENDER
