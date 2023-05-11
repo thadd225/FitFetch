@@ -9,7 +9,14 @@ html {
 body {
   font-family: 'Nunito', sans-serif;
   display: flex;
-  flex: 1;
+  /* flex: 1; */
+  /* border: 2px red solid; */
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* border: 2px red solid; */
 }
 
@@ -54,7 +61,8 @@ body {
 .upperBody button,
 .lowerBody button,
 .beginWorkout,
-#endWorkout {
+#endWorkout,
+#done {
   background: #5e5df0;
   border-radius: 999px;
   box-shadow: #5e5df0 0 10px 20px -10px;
@@ -172,6 +180,49 @@ li {
   .button-59 {
     min-width: 170px;
   }
+}
+
+.summaryDiv,
+.summary {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  /* border: 2px red solid; */
+}
+
+.summary li {
+  /* height: 80%; */
+  /* border: 2px green solid; */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+#borderMe {
+  border-bottom: 2px black solid;
+}
+
+.summaryContainer {
+  margin-top: 60px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 2px grey solid;
+  border-radius: 12px;
+}
+
+.summaryContainer h1 {
+  /* border-bottom: 2px black solid; */
+  display: flex;
+  flex: 1;
 }
 /* text-decoration: none;
   color: #000;

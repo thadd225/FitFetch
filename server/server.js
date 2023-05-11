@@ -24,10 +24,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
-//request handler for posting exercises when exercise button is clicked
+//request handler for creating workout when begin workout button is clicked
 app.post('/add', workoutController.create, (req, res) => {
   // console.log('post request hit serverside');
-  res.status(200).json({ message: 'Workout added successfully ' });
+  res.status(200).json({ id: res.locals.id });
 });
 
 //request handler for adding exercises
@@ -38,7 +38,7 @@ app.patch('/add', workoutController.addExercise, (req, res) => {
 
 //request handler for ending workout
 app.post('/end', workoutController.endWorkout, (req, res) => {
-  res.status(200);
+  res.status(200).json({ finishedWorkout: res.locals.finishedWorkout });
 });
 
 // catch-all route handler for any requests to an unknown route

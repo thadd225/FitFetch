@@ -9,6 +9,8 @@ workoutController.create = async (req, res, next) => {
   const { workoutName } = req.body;
   try {
     const result = await Workout.create({ name: workoutName });
+    res.locals.id = result.id;
+    console.log(result);
     return next();
   } catch (err) {
     return next({
@@ -22,9 +24,10 @@ workoutController.addExercise = async (req, res, next) => {
   //   console.log('workoutController.addExercise hit');
   //   console.log('addExercise req.body', req.body);
   const { exercise, workoutName } = req.body;
+  console.log(req.body);
   try {
     const result = await Workout.findOneAndUpdate(
-      { name: workoutName },
+      { _id: workoutName },
       { $push: { exercises: exercise } },
       { new: true }
     );
@@ -39,8 +42,14 @@ workoutController.endWorkout = async (req, res, next) => {
   console.log('endWorkout hit');
   const { workoutName } = req.body;
   try {
-    const result = await Workout.findOne({ name: workoutName });
+    const result = await Workout.findOne({ _id: workoutName });
     console.log(result);
+    finishedWorkout = {
+      name: result.name,
+      exercises: result.exercises,
+      date: result.date,
+    };
+    res.locals.finishedWorkout = finishedWorkout;
     return next();
   } catch (err) {
     next({ log: 'error in ending workout', message: { err } });

@@ -4,7 +4,7 @@ import { useState } from 'react';
 const Greeting = (props) => {
   //when begin workout button is clicked, prompt user for name of workout
   //after entering name, send a post request with name entered and create a new workout document with it in mongoDB
-  //invoke handleWorkoutName with input to allow passing of name of workout throughout components (so we can identify workout to add exercises too in database)
+  //invoke handleWorkoutName with input to allow passing of id workout throughout components (so we can identify workout to add exercises too in database)
   const inputName = async () => {
     let input = prompt('What do you want to name this workout?');
     alert(`You have named this workout '${input}'`);
@@ -14,14 +14,15 @@ const Greeting = (props) => {
       headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => res.json())
-      .then(() => console.log('post request response received on front end'))
-      .then(props.handleWorkoutName(input))
+      .then((res) => props.handleWorkoutName(res.id))
+      // .then((res) => console.log('begin workout response from server', res.id))
       .catch((error) => console.error('Error: ', error));
   };
 
   //workoutStatus set to false originally, then when begin workout button is pressed, set to true
   // console.log('props workoutStatus', props.workoutStatus);
-  if (props.workoutStatus === false) {
+  let keys = Object.keys(props.workoutSummary);
+  if (props.workoutStatus === false && !keys.length) {
     return (
       <div className="Greeting">
         <h1 className="Greeting1">Welcome!</h1>

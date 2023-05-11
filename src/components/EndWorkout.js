@@ -14,7 +14,7 @@ const EndWorkout = (props) => {
       headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => res.json())
-      .then(() => console.log(res))
+      .then((res) => props.handleWorkoutSummary(res))
       .catch((error) => console.error('Error: ', error));
     // };
     // fetch('http://localhost:3000/end', {
