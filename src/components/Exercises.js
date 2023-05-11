@@ -27,7 +27,7 @@ const Exercises = (props) => {
   }, [props.name]);
   //mark off any exercises that have been clicked
   const crossOutExercise = (id) => {
-    document.getElementById(id).style.textDecoration = 'line-through';
+    document.getElementById(id).style.textDecoration = 'line-through white 2px';
   };
   //render exercises only if
   if (props.workoutStatus === true) {
@@ -40,7 +40,7 @@ const Exercises = (props) => {
             return (
               <li className="exercises" key={index}>
                 <button
-                  className="button-59"
+                  className="button-84"
                   id={data.name}
                   onClick={() => {
                     handleExerciseClick(data.name);

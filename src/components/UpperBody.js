@@ -5,7 +5,7 @@ const UpperBody = (props) => {
     return (
       <div className="upperBody">
         <h2 className="Greeting2">
-          Which muscles would you like exercises for?
+          Which muscle group would you like exercises for?
         </h2>
         <h2>Upper Body</h2>
         <div className="upperBodyButtons">

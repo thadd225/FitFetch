@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bowlby+One+SC&family=Nunito:wght@300&display=swap');
 html {
   height: 100%;
   display: flex;
@@ -11,26 +12,38 @@ body {
   display: flex;
   /* flex: 1; */
   /* border: 2px red solid; */
+  background-color: rgb(39, 39, 39);
+  color: white;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
   /* border: 2px red solid; */
 }
 
 .Greeting {
+  /* border: 2px green solid; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 300px;
 }
 .Greeting1,
 .Greeting2 {
   display: flex;
   justify-content: center;
-  color: black;
+  /* color: white; */
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.Greeting h1 {
+  /* margin-bottom: 40px; */
 }
 
 .innerBody {
@@ -46,10 +59,17 @@ body {
   align-items: stretch;
   /* border: 2px blue solid; */
 }
+.upperBody .Greeting2 {
+  margin-top: 50px;
+}
 
+.upperBody h2 {
+  margin-top: 0;
+}
 .upperBody h2,
 .lowerBody h2 {
   text-align: center;
+  color: white;
 }
 .upperBodyButtons,
 .lowerBodyButtons {
@@ -63,9 +83,9 @@ body {
 .beginWorkout,
 #endWorkout,
 #done {
-  background: #5e5df0;
+  background: #0d5487c5;
   border-radius: 999px;
-  box-shadow: #5e5df0 0 10px 20px -10px;
+  box-shadow: rgba(0, 1, 0, 0.2) 0 2px 8px;
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
@@ -74,7 +94,7 @@ body {
     EmojiSymbols, -apple-system, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue',
     'Noto Sans', sans-serif;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 24px;
   opacity: 1;
   outline: 0 solid transparent;
@@ -86,6 +106,21 @@ body {
   word-break: break-word;
   border: 0;
 }
+.upperBody button,
+.lowerBody button,
+.beginWorkout,
+#done {
+  background-image: linear-gradient(#4c7390c5, #0c3360);
+}
+
+.upperBody button:hover,
+.lowerBody button:hover,
+.beginWorkout:hover,
+#endWorkout:hover,
+#done:hover {
+  opacity: 0.85;
+}
+
 .footer {
   display: flex;
   justify-content: center;
@@ -94,7 +129,9 @@ body {
   margin-top: 20px;
 }
 #endWorkout {
-  background-color: red;
+  /* background-color: rgba(205, 8, 8, 0.708); */
+  background-image: linear-gradient(#c23422, rgba(205, 8, 8, 0.708));
+  box-shadow: rgba(0, 1, 0, 0.2) 0 2px 8px;
 }
 
 .exercisesDiv {
@@ -129,56 +166,59 @@ li {
 .button-59:last-child {
   border-bottom: #000;
 } */
-.button-59 {
-  margin-top: 5px;
+
+.button-84 {
   align-items: center;
-  background-color: #fff;
-  border: 2px solid #06f;
-  /* border-bottom: none; */
+  background-color: initial;
+  background-image: linear-gradient(#464d55, #15355c);
+  border-radius: 8px;
+  border-width: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
-  color: #000;
+  color: #fff;
   cursor: pointer;
   display: inline-flex;
-  fill: #000;
-  font-family: 'Nunito', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  height: 48px;
+  flex-direction: column;
+  font-family: expo-brand-demi, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 18px;
+  height: 46px;
   justify-content: center;
-  letter-spacing: -0.8px;
-  line-height: 24px;
-  min-width: 140px;
-  outline: 0;
-  padding: 0 17px;
+  line-height: 1;
+  margin: 4px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 32px;
   text-align: center;
   text-decoration: none;
-  transition: all 0.3s;
+  transform: translate3d(0, 0, 0);
+  transition: all 150ms;
+  vertical-align: baseline;
+  white-space: nowrap;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  flex: 1;
-  border-radius: 18px;
+  justify-content: center;
+  width: 500px;
+}
+.button-84:hover,
+#endWorkout:hover {
+  box-shadow: rgba(0, 1, 0, 0.2) 0 2px 8px;
+  opacity: 0.85;
 }
 
-.button-59:focus {
-  color: #171e29;
+.button-84:active {
+  outline: 0;
 }
 
-.button-59:hover {
-  border-color: rgb(3, 67, 162);
-  color: rgb(3, 67, 162);
-  fill: rgb(3, 67, 162);
+.button-84:focus {
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 0 3px;
 }
 
-.button-59:active {
-  border-color: green;
-  color: green;
-  fill: green;
-}
-
-@media (min-width: 768px) {
-  .button-59 {
-    min-width: 170px;
+@media (max-width: 420px) {
+  .button-84 {
+    height: 48px;
   }
 }
 
@@ -193,30 +233,43 @@ li {
   /* border: 2px red solid; */
 }
 
+.summaryContainer {
+  /* font-family: 'Bowlby One SC', cursive; */
+  background-image: linear-gradient(#325976c5, #1a3e67);
+  color: white;
+}
+
 .summary li {
   /* height: 80%; */
   /* border: 2px green solid; */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* flex: 1; */
   margin-bottom: 8px;
   font-size: 20px;
   margin-bottom: 18px;
+  width: 100%;
+  color: white;
 }
 
 #borderMe {
-  border-bottom: 2px black solid;
+  border-bottom: 2px rgba(65, 95, 150, 0.735) solid;
 }
 
 .summaryContainer {
   margin-top: 60px;
   margin-bottom: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  border: 2px grey solid;
   border-radius: 12px;
+  background-color: gray;
 }
 
 .summaryContainer h1 {
