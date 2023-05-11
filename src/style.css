@@ -236,7 +236,8 @@ li {
 .summaryContainer {
   /* font-family: 'Bowlby One SC', cursive; */
   background-image: linear-gradient(#325976c5, #1a3e67);
-  color: white;
+  outline: 0 solid transparent;
+  box-shadow: rgba(0, 1, 0, 0.2) 0 20px 20px 0;
 }
 
 .summary li {
@@ -255,7 +256,7 @@ li {
 }
 
 #borderMe {
-  border-bottom: 2px rgba(65, 95, 150, 0.735) solid;
+  border-bottom: 3px rgba(65, 95, 150, 0.735) solid;
 }
 
 .summaryContainer {
