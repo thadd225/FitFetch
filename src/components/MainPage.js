@@ -11,25 +11,23 @@ const MainPage = () => {
   //workoutStatus set to false originally, then when begin workout button is pressed, set to true
   const [workoutStatus, setWorkoutStatus] = useState(false);
   const [workoutName, setWorkoutName] = useState('');
+  //useState to contain data from api request (exercises returned from request) so they can be rendered in Exercises component
+  const [name, setName] = useState([]);
   //add workout summary to state
   const [workoutSummary, setWorkoutSummary] = useState({});
-  //useState to render data from api request
-  //exercise state
-  const [name, setName] = useState([]);
-
-  //function to update state when workout summary comes in
-  const handleWorkoutSummary = (workoutFinished) => {
-    console.log('checking summary state ', workoutFinished);
-    setWorkoutSummary(workoutFinished);
-  };
+  //create state to update css styling when new muscle button has been clicked
+  const [exerciseListCSS, setExerciseListCSS] = useState(false);
 
   //handle begin workout button click
   const handleWorkoutStatusClick = () => setWorkoutStatus(!workoutStatus);
+
   //maintain name of workout to pass around to components
   //USE ID SENT FROM ORIGINAL POST REQUEST INSTEAD??
   //switched to id ^
   const handleWorkoutName = (id) => setWorkoutName(id);
-  //create function that on click will send a get request to an api with the endpoint corresponding to the name of button clicked
+
+  //create function that on click will send a get request to an api to retrieve exercises corresponding to the name of button clicked
+  //update
   const handleClick = async (muscle) => {
     try {
       const response = await fetch(
@@ -51,6 +49,11 @@ const MainPage = () => {
     } catch (err) {
       console.error('Error: ', err);
     }
+  };
+
+  //function to update state when workout summary comes in
+  const handleWorkoutSummary = (workoutFinished) => {
+    setWorkoutSummary(workoutFinished);
   };
 
   return (
