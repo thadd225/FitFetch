@@ -1,10 +1,10 @@
-const Workout = require('../models/workoutModel');
-const mongoose = require('mongoose');
+const Workout = require("../models/workoutModel");
+const mongoose = require("mongoose");
 
 const workoutController = {};
 
 workoutController.create = async (req, res, next) => {
-  console.log('workoutController.create hit');
+  console.log("workoutController.create hit");
   //   console.log('req.body', req.body);
   const { workoutName } = req.body;
   try {
@@ -15,7 +15,7 @@ workoutController.create = async (req, res, next) => {
   } catch (err) {
     return next({
       log: `${err}`,
-      message: { err: 'An error occurred' },
+      message: { err: "An error occurred" },
     });
   }
 };
@@ -31,7 +31,7 @@ workoutController.addExercise = async (req, res, next) => {
       { $push: { exercises: exercise } },
       { new: true }
     );
-    console.log('exercises array: ', result.exercises);
+    console.log("exercises array: ", result.exercises);
     return next();
   } catch (err) {
     next({ log: `error in adding exercise`, message: { err } });
@@ -39,7 +39,7 @@ workoutController.addExercise = async (req, res, next) => {
 };
 
 workoutController.endWorkout = async (req, res, next) => {
-  console.log('endWorkout hit');
+  console.log("endWorkout hit");
   const { workoutName } = req.body;
   try {
     const result = await Workout.findOne({ _id: workoutName });
@@ -52,7 +52,7 @@ workoutController.endWorkout = async (req, res, next) => {
     res.locals.finishedWorkout = finishedWorkout;
     return next();
   } catch (err) {
-    next({ log: 'error in ending workout', message: { err } });
+    next({ log: "error in ending workout", message: { err } });
   }
 };
 
