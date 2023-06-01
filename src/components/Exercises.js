@@ -5,7 +5,7 @@ const Exercises = (props) => {
   //alert user to confirm selection when clicking exercise button?
   //when user clicks exercise button, send post request to /add containing the exercise name in the body as well as workout name (so router knows which workout to add exercise to)
   const handleExerciseClick = async (exercise) => {
-    fetch(`http://localhost:3000/add`, {
+    fetch(`/add`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -34,13 +34,13 @@ const Exercises = (props) => {
     //MUST HAVE 2 RETURN STATEMENTS WHEN USING MAP TO RENDER
     //one return for entire div, one for each indivual li
     return (
-      <div className="exercisesDiv">
+      <div className='exercisesDiv'>
         <ul>
           {props.name.map((data, index) => {
             return (
-              <li className="exercises" key={index}>
+              <li className='exercises' key={index}>
                 <button
-                  className="button-84"
+                  className='button-84'
                   id={data.name}
                   onClick={() => {
                     handleExerciseClick(data.name);

@@ -8,7 +8,7 @@ const EndWorkout = (props) => {
     const workoutName = props.workoutName;
     console.log('endWorkoutFunc hit');
     console.log('workoutName', props.workoutName);
-    fetch('http://localhost:3000/end', {
+    fetch('/end', {
       method: 'POST',
       body: JSON.stringify({ workoutName }),
       headers: { 'Content-Type': 'application/json' },
@@ -31,7 +31,7 @@ const EndWorkout = (props) => {
   if (props.workoutStatus === true) {
     return (
       <button
-        id="endWorkout"
+        id='endWorkout'
         onClick={() => {
           endWorkoutFunc();
           props.handleWorkoutStatusClick();

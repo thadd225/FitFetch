@@ -68,7 +68,7 @@ const MainPage = () => {
   const inputName = async () => {
     let input = prompt('What do you want to name this workout?');
     alert(`You have named this workout '${input}'`);
-    fetch('http://localhost:3000/add', {
+    fetch('/add', {
       method: 'POST',
       body: JSON.stringify({ workoutName: input }),
       headers: { 'Content-Type': 'application/json' },
@@ -80,7 +80,7 @@ const MainPage = () => {
   };
 
   return (
-    <div className="wrapper">
+    <div className='wrapper'>
       <Greeting
         workoutStatus={workoutStatus}
         handleWorkoutStatusClick={handleWorkoutStatusClick}
@@ -97,7 +97,7 @@ const MainPage = () => {
           inputName={inputName}
         />
       ) : null}
-      <div className="innerBody">
+      <div className='innerBody'>
         <UpperBody handleClick={handleClick} workoutStatus={workoutStatus} />
         <LowerBody handleClick={handleClick} workoutStatus={workoutStatus} />
         <Exercises
@@ -106,7 +106,7 @@ const MainPage = () => {
           workoutName={workoutName}
         />
       </div>
-      <div className="footer">
+      <div className='footer'>
         <EndWorkout
           workoutStatus={workoutStatus}
           handleWorkoutStatusClick={handleWorkoutStatusClick}
@@ -114,7 +114,7 @@ const MainPage = () => {
           workoutName={workoutName}
         />
       </div>
-      <div className="summaryDiv">
+      <div className='summaryDiv'>
         <WorkoutSummary
           workoutSummary={workoutSummary}
           handleWorkoutSummary={handleWorkoutSummary}
