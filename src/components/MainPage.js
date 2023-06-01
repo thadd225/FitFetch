@@ -1,11 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Modal from 'react-bootstrap/Modal';
 import Greeting from './Greeting.js';
 import UpperBody from './UpperBody.js';
 import LowerBody from './LowerBody.js';
 import Exercises from './Exercises.js';
 import EndWorkout from './EndWorkout.js';
 import WorkoutSummary from './WorkoutSummary';
+// import ModalForm from './ModalForm';
 
 const MainPage = () => {
   //workoutStatus set to false originally, then when begin workout button is pressed, set to true
@@ -16,7 +19,10 @@ const MainPage = () => {
   //add workout summary to state
   const [workoutSummary, setWorkoutSummary] = useState({});
   //create state to update css styling when new muscle button has been clicked
-  const [exerciseListCSS, setExerciseListCSS] = useState(false);
+  const [modalState, setModalState] = useState(false);
+
+  const openModal = () => setModalState(true);
+  const closeModal = () => setModalState(false);
 
   //handle begin workout button click
   const handleWorkoutStatusClick = () => setWorkoutStatus(!workoutStatus);
@@ -56,6 +62,23 @@ const MainPage = () => {
     setWorkoutSummary(workoutFinished);
   };
 
+  //when begin workout button is clicked, prompt user for name of workout
+  //after entering name, send a post request with name entered and create a new workout document with it in mongoDB
+  //invoke handleWorkoutName with input to allow passing of id workout throughout components (so we can identify workout to add exercises too in database)
+  const inputName = async () => {
+    let input = prompt('What do you want to name this workout?');
+    alert(`You have named this workout '${input}'`);
+    fetch('http://localhost:3000/add', {
+      method: 'POST',
+      body: JSON.stringify({ workoutName: input }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((res) => res.json())
+      .then((res) => handleWorkoutName(res.id))
+      // .then((res) => console.log('begin workout response from server', res.id))
+      .catch((error) => console.error('Error: ', error));
+  };
+
   return (
     <div className="wrapper">
       <Greeting
@@ -63,7 +86,17 @@ const MainPage = () => {
         handleWorkoutStatusClick={handleWorkoutStatusClick}
         handleWorkoutName={handleWorkoutName}
         workoutSummary={workoutSummary}
+        inputName={inputName}
       />
+      {modalState ? (
+        <ModalForm
+          modalState={modalState}
+          workoutName={workoutName}
+          openModal={openModal}
+          closeModal={closeModal}
+          inputName={inputName}
+        />
+      ) : null}
       <div className="innerBody">
         <UpperBody handleClick={handleClick} workoutStatus={workoutStatus} />
         <LowerBody handleClick={handleClick} workoutStatus={workoutStatus} />
