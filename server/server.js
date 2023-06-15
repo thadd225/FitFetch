@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const workoutController = require('./controllers/workoutController');
-const PORT = 3000;
+const PORT = 3004;
 
 mongoose
   .connect(
