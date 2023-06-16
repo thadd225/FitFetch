@@ -5,13 +5,13 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const workoutController = require('./controllers/workoutController');
-const PORT = 3004;
+const PORT = 3000;
 
-mongoose
-  .connect(
-    'mongodb+srv://thadd225:IZ3GtDSjJeN0uHAi@cluster0.imjci80.mongodb.net/?retryWrites=true&w=majority'
-  )
-  .catch((error) => handleError(error));
+// mongoose
+//   .connect(
+//     'mongodb+srv://thadd225:IZ3GtDSjJeN0uHAi@cluster0.imjci80.mongodb.net/?retryWrites=true&w=majority'
+//   )
+//   .catch((error) => handleError(error));
 
 app.use(express.json());
 app.use(cors());
