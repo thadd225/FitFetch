@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const db = require('../db');
 const workoutController = {};
 
-//Example Query: INSERT INTO workout (workoutName, createdAt, exercises) VALUES ('Chest and Arms', '6/15/23 @ 1:52 PM', ARRAY ['bench press', 'bicep curls'])
+//account creation/users do not exist yet so will be adding every workout to user with id of 1
 workoutController.create = async (req, res, next) => {
   console.log('workoutController.create hit');
   const { workoutName } = req.body;
@@ -35,23 +35,47 @@ workoutController.create = async (req, res, next) => {
   // }
 };
 
+//check if exercise submitted exists, if it does, add its id to the junction table with the current workout_id. If not, add the exercise to the exercise table then add it to the junction table along with the current workout_id
 workoutController.addExercise = async (req, res, next) => {
   //   console.log('workoutController.addExercise hit');
-  //   console.log('addExercise req.body', req.body);
-  const { exercise, workoutName } = req.body;
+  // const { exercise, workoutName } = req.body;
   console.log(req.body);
-  const sqlQuery = 'UPDATE workout (exercises) VALUES';
+  const sqlQuery1 = 'SELECT exercise_id FROM exercises WHERE name=($1)';
+  const sqlQuery2 =
+    'INSERT INTO workout_exercise_junction (workout_id, exercise_id) VALUES ($1, $2)';
+  const sqlQuery3 =
+    'INSERT INTO exercises (name) VALUES ($1) RETURNING exercise_id';
   try {
-    const result = await Workout.findOneAndUpdate(
-      { _id: workoutName },
-      { $push: { exercises: exercise } },
-      { new: true }
-    );
-    console.log('exercises array: ', result.exercises);
+    const checkExercise = await db.query(sqlQuery1, [exercise]);
+    // console.log('checkExercise: ', checkExercise);
+    if (checkExercise.rows[0]) {
+      const exerciseId = checkExercise.rows[0].exercise_id;
+      // console.log('EXERCISE ID: ', exerciseId);
+      const test = await db.query(sqlQuery2, [workoutName, exerciseId]);
+    } else {
+      const newExercise = await db.query(sqlQuery3, [exercise]);
+      const newExerciseId = newExercise.rows[0].exercise_id;
+      await db.query(sqlQuery2, [workoutName, newExerciseId]);
+    }
     return next();
   } catch (err) {
-    next({ log: `error in adding exercise`, message: { err } });
+    next({
+      log: `error in adding exercise: ${err}`,
+      status: 500,
+      message: { err },
+    });
   }
+  // try {
+  //   const result = await Workout.findOneAndUpdate(
+  //     { _id: workoutName },
+  //     { $push: { exercises: exercise } },
+  //     { new: true }
+  //   );
+  //   console.log('exercises array: ', result.exercises);
+  //   return next();
+  // } catch (err) {
+  //   next({ log: `error in adding exercise`, message: { err } });
+  // }
 };
 
 workoutController.endWorkout = async (req, res, next) => {
