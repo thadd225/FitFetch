@@ -10,11 +10,11 @@ workoutController.create = async (req, res, next) => {
   const sqlQuery =
     'INSERT INTO workouts (name, user_id) VALUES ($1, 1) RETURNING workout_id';
   try {
-    console.log('hit try block');
+    // console.log('hit try block');
     const result = await db.query(sqlQuery, [workoutName]);
     // console.log(result);
     res.locals.id = result.rows[0].workout_id;
-    console.log('RES.LOCALS.ID: ', res.locals.id);
+    // console.log('RES.LOCALS.ID: ', res.locals.id);
     return next();
   } catch (err) {
     return next({
@@ -38,8 +38,8 @@ workoutController.create = async (req, res, next) => {
 //check if exercise submitted exists, if it does, add its id to the junction table with the current workout_id. If not, add the exercise to the exercise table then add it to the junction table along with the current workout_id
 workoutController.addExercise = async (req, res, next) => {
   //   console.log('workoutController.addExercise hit');
-  // const { exercise, workoutName } = req.body;
-  console.log(req.body);
+  const { exercise, workoutName } = req.body;
+  // console.log(req.body);
   const sqlQuery1 = 'SELECT exercise_id FROM exercises WHERE name=($1)';
   const sqlQuery2 =
     'INSERT INTO workout_exercise_junction (workout_id, exercise_id) VALUES ($1, $2)';
@@ -51,7 +51,7 @@ workoutController.addExercise = async (req, res, next) => {
     if (checkExercise.rows[0]) {
       const exerciseId = checkExercise.rows[0].exercise_id;
       // console.log('EXERCISE ID: ', exerciseId);
-      const test = await db.query(sqlQuery2, [workoutName, exerciseId]);
+      await db.query(sqlQuery2, [workoutName, exerciseId]);
     } else {
       const newExercise = await db.query(sqlQuery3, [exercise]);
       const newExerciseId = newExercise.rows[0].exercise_id;
@@ -81,19 +81,34 @@ workoutController.addExercise = async (req, res, next) => {
 workoutController.endWorkout = async (req, res, next) => {
   console.log('endWorkout hit');
   const { workoutName } = req.body;
+  const sqlQuery =
+    'SELECT exercises.name FROM workout_exercise_junction we INNER JOIN workouts ON workouts.workout_id=we.workout_id INNER JOIN exercises ON we.exercise_id=exercises.exercise_id WHERE we.workout_id=($1);';
+  const sqlQuery2 = 'SELECT workouts.name FROM workouts WHERE workout_id=($1)';
   try {
-    const result = await Workout.findOne({ _id: workoutName });
-    console.log(result);
-    finishedWorkout = {
-      name: result.name,
-      exercises: result.exercises,
-      date: result.date,
-    };
-    res.locals.finishedWorkout = finishedWorkout;
+    // console.log('hit try block in endWorkout');
+    const finishedWorkout = await db.query(sqlQuery, [workoutName]);
+    const name = await db.query(sqlQuery2, [workoutName]);
+    // console.log('finishedWorkout!!!!!: ', finishedWorkout);
+    res.locals.finishedWorkout = finishedWorkout.rows;
+    res.locals.workoutName = name.rows[0].name;
+    // console.log(res.locals.workoutName);
     return next();
   } catch (err) {
     next({ log: 'error in ending workout', message: { err } });
   }
+  // try {
+  //   const result = await Workout.findOne({ _id: workoutName });
+  //   console.log(result);
+  //   finishedWorkout = {
+  //     name: result.name,
+  //     exercises: result.exercises,
+  //     date: result.date,
+  //   };
+  //   res.locals.finishedWorkout = finishedWorkout;
+  //   return next();
+  // } catch (err) {
+  //   next({ log: 'error in ending workout', message: { err } });
+  // }
 };
 
 module.exports = workoutController;
