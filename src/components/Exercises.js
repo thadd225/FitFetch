@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect } from 'react';
 
 const Exercises = (props) => {
-  //alert user to confirm selection when clicking exercise button?
   //when user clicks exercise button, send post request to /add containing the exercise name in the body as well as workout name (so router knows which workout to add exercise to)
   const handleExerciseClick = async (exercise) => {
     fetch(`/add`, {
@@ -57,15 +56,5 @@ const Exercises = (props) => {
     );
   }
 };
-
-//same as:
-// return (
-//     <div>
-//     <li>bench press</li>
-//     <li>dumbbell fly</li>
-//     <li>push up</li>
-//      </div>
-// )
-//instead just creating an array with each element being a unique li, but have to return result to map function
 
 export default Exercises;

@@ -4,14 +4,11 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 2px red solid; */
 }
 
 body {
   font-family: 'Nunito', sans-serif;
   display: flex;
-  /* flex: 1; */
-  /* border: 2px red solid; */
   background-color: rgb(39, 39, 39);
   color: white;
 }
@@ -22,11 +19,9 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  /* border: 2px red solid; */
 }
 
 .Greeting {
-  /* border: 2px green solid; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,27 +32,19 @@ body {
 .Greeting2 {
   display: flex;
   justify-content: center;
-  /* color: white; */
   margin-top: 0;
   margin-bottom: 30px;
-}
-
-.Greeting h1 {
-  /* margin-bottom: 40px; */
 }
 
 .innerBody {
   display: flex;
   flex-direction: column;
-  /* border: 2px solid blue; */
 }
 .upperBody,
 .lowerBody {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: stretch;
-  /* border: 2px blue solid; */
 }
 .upperBody .Greeting2 {
   margin-top: 50px;
@@ -76,7 +63,6 @@ body {
   display: flex;
   justify-content: center;
   gap: 30px;
-  /* border: 2px red solid; */
 }
 .upperBody button,
 .lowerBody button,
@@ -125,17 +111,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  /* border: 2px green solid; */
   margin-top: 20px;
 }
 #endWorkout {
-  /* background-color: rgba(205, 8, 8, 0.708); */
   background-image: linear-gradient(#c23422, rgba(205, 8, 8, 0.708));
   box-shadow: rgba(0, 1, 0, 0.2) 0 2px 8px;
 }
 
 .exercisesDiv {
-  /* border: 2px red solid; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,7 +128,6 @@ body {
 
 ul {
   width: 100%;
-  /* border: 2px solid blue; */
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -155,17 +137,10 @@ ul {
 }
 
 li {
-  /* border: 2px green solid; */
   width: 50%;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* white-space: nowrap; */
 }
-/* 
-.button-59:last-child {
-  border-bottom: #000;
-} */
 
 .button-84 {
   align-items: center;
@@ -227,27 +202,20 @@ li {
   display: flex;
   flex-direction: column;
   flex: 1;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-  /* border: 2px red solid; */
 }
 
 .summaryContainer {
-  /* font-family: 'Bowlby One SC', cursive; */
   background-image: linear-gradient(#325976c5, #1a3e67);
   outline: 0 solid transparent;
   box-shadow: rgba(0, 1, 0, 0.2) 0 20px 20px 0;
 }
 
 .summary li {
-  /* height: 80%; */
-  /* border: 2px green solid; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
-  /* flex: 1; */
   margin-bottom: 8px;
   font-size: 20px;
   margin-bottom: 18px;
@@ -274,21 +242,6 @@ li {
 }
 
 .summaryContainer h1 {
-  /* border-bottom: 2px black solid; */
   display: flex;
   flex: 1;
 }
-/* text-decoration: none;
-  color: #000;
-  display: block;
-  width: 200px; */
-/* -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-  transition: font-size 0.3s ease, background-color 0.3s ease; */
-
-/* li a:hover {
-  font-size: 30px;
-  background: #f6f6f6;
-} */

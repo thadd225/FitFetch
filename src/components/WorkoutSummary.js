@@ -2,12 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 
 const WorkoutSummary = (props) => {
-  // console.log('!!!!', props.workoutSummary);
   let keys = Object.keys(props.workoutSummary);
-  // console.log(keys);
   if (keys.length) {
     let finishedWorkout = props.workoutSummary.finishedWorkout;
-    // console.log('finished workout: ', finishedWorkout);
     return (
       <div className='summary'>
         <h1>You crushed it!</h1>
@@ -26,7 +23,6 @@ const WorkoutSummary = (props) => {
         </button>
       </div>
     );
-    // const exercises = props.workoutSummary
   }
 };
 

@@ -1,14 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import Modal from 'react-bootstrap/Modal';
 import Greeting from './Greeting.js';
 import UpperBody from './UpperBody.js';
 import LowerBody from './LowerBody.js';
 import Exercises from './Exercises.js';
 import EndWorkout from './EndWorkout.js';
 import WorkoutSummary from './WorkoutSummary';
-// import ModalForm from './ModalForm';
 
 const MainPage = () => {
   //workoutStatus set to false originally, then when begin workout button is pressed, set to true
@@ -28,12 +25,9 @@ const MainPage = () => {
   const handleWorkoutStatusClick = () => setWorkoutStatus(!workoutStatus);
 
   //maintain name of workout to pass around to components
-  //USE ID SENT FROM ORIGINAL POST REQUEST INSTEAD??
-  //switched to id ^
   const handleWorkoutName = (id) => setWorkoutName(id);
 
   //create function that on click will send a get request to an api to retrieve exercises corresponding to the name of button clicked
-  //update
   const handleClick = async (muscle) => {
     try {
       const response = await fetch(
@@ -51,7 +45,6 @@ const MainPage = () => {
       }
       const result = await response.json();
       setName(result);
-      // console.log('result: ', result);
     } catch (err) {
       console.error('Error: ', err);
     }
@@ -75,7 +68,6 @@ const MainPage = () => {
     })
       .then((res) => res.json())
       .then((res) => handleWorkoutName(res.id))
-      // .then((res) => console.log('begin workout response from server', res.id))
       .catch((error) => console.error('Error: ', error));
   };
 
@@ -88,15 +80,6 @@ const MainPage = () => {
         workoutSummary={workoutSummary}
         inputName={inputName}
       />
-      {modalState ? (
-        <ModalForm
-          modalState={modalState}
-          workoutName={workoutName}
-          openModal={openModal}
-          closeModal={closeModal}
-          inputName={inputName}
-        />
-      ) : null}
       <div className='innerBody'>
         <UpperBody handleClick={handleClick} workoutStatus={workoutStatus} />
         <LowerBody handleClick={handleClick} workoutStatus={workoutStatus} />
